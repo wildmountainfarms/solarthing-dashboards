@@ -1,0 +1,1926 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 12,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "SolarThing",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://github.com/wildmountainfarms/solarthing"
+    },
+    {
+      "asDropdown": false,
+      "icon": "doc",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "SolarThing Docs",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://solarthing.readthedocs.io"
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "volt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        batteryVoltage\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Battery Voltage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-yellow",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "watt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        chargingPower\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Charging Wattage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "description": "The amount of energy put into the batteries from the solar panels today. This value is reset when the Rover starts charging in the morning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "kwatth",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        dailyKWH\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Daily kWh",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 115,
+          "min": 20,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "dark-blue",
+                "value": 32
+              },
+              {
+                "color": "super-light-blue",
+                "value": 45
+              },
+              {
+                "color": "light-green",
+                "value": 55
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 65
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "dark-red",
+                "value": 105
+              }
+            ]
+          },
+          "unit": "fahrenheit",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        batteryTemperatureFahrenheit\n        controllerTemperatureFahrenheit\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Temperatures",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "packet.batteryTemperatureFahrenheit Rover 40A": "Battery",
+              "packet.controllerTemperatureFahrenheit Rover 40A": "Controller"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "max": 115,
+          "min": 20,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "dark-blue",
+                "value": 32
+              },
+              {
+                "color": "super-light-blue",
+                "value": 45
+              },
+              {
+                "color": "light-green",
+                "value": 55
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 65
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "dark-red",
+                "value": 105
+              }
+            ]
+          },
+          "unit": "none",
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 135
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        productSerialNumber\n        ratedChargingCurrent\n        ratedDischargingCurrent\n        softwareVersion {\n          representation\n        }\n        hardwareVersion {\n          representation\n        }\n        productModelString\n        controllerDeviceAddress\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Device Info",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "dateMillis": 0,
+              "packet.controllerDeviceAddress": 7,
+              "packet.hardwareVersion.representation": 6,
+              "packet.productModelString": 1,
+              "packet.productSerialNumber": 2,
+              "packet.ratedChargingCurrent": 3,
+              "packet.ratedDischargingCurrent": 4,
+              "packet.softwareVersion.representation": 5
+            },
+            "renameByName": {
+              "packet.controllerDeviceAddress": "Modbus Address",
+              "packet.hardwareVersion.representation": "Hardware Version",
+              "packet.hardwareVersion.representation Rover 40A": "Hardware Version",
+              "packet.identityInfo.displayName Rover 40A": "Name",
+              "packet.productModelString": "Product Model",
+              "packet.productSerialNumber": "Serial Number",
+              "packet.productSerialNumber Rover 40A": "Serial",
+              "packet.ratedChargingCurrent": "Charging amps",
+              "packet.ratedChargingCurrent Rover 40A": "Rated amps",
+              "packet.ratedDischargingCurrent": "Discharging amps",
+              "packet.ratedDischargingCurrent Rover 40A": "Rated discharging amps",
+              "packet.softwareVersion.representation": "Software Version",
+              "packet.softwareVersion.representation Rover 40A": "Software Version"
+            }
+          }
+        },
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        operatingDaysCount\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Operating Days Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-yellow",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "watt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 7
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        loadPower\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Load Wattage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "description": "The amount of energy supplied by the Rover's load terminals today. This resets in the morning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "kwatth",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 8,
+        "y": 7
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        dailyKWHConsumption\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Daily kWh Consumption",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "max": 115,
+          "min": 20,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "dark-blue",
+                "value": 32
+              },
+              {
+                "color": "super-light-blue",
+                "value": 45
+              },
+              {
+                "color": "light-green",
+                "value": 55
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 65
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "dark-red",
+                "value": 105
+              }
+            ]
+          },
+          "unit": "none",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 12,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId,\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        solarModeTypeDisplayName\n        loadWorkingMode\n        dailyMaxChargingPower\n        dailyMaxDischargingPower\n        dailyMaxBatteryVoltage\n        dailyMinBatteryVoltage\n        dailyAH\n        dailyAHDischarging\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Charge Controller State",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "dateMillis": 0,
+              "packet.hardwareVersion.representation": 5,
+              "packet.productModelString": 1,
+              "packet.productSerialNumber": 2,
+              "packet.ratedChargingCurrent": 3,
+              "packet.softwareVersion.representation": 4
+            },
+            "renameByName": {
+              "packet.dailyAH": "Daily AH",
+              "packet.dailyAHDischarging": "Daily AH Discharging",
+              "packet.dailyMaxBatteryVoltage": "Daily Max Battery Voltage",
+              "packet.dailyMaxChargingPower": "Daily Max Charging Power",
+              "packet.dailyMaxDischargingPower": "Daily Max Discharging Power",
+              "packet.dailyMinBatteryVoltage": "Daily Min Battery Voltage",
+              "packet.hardwareVersion.representation": "Hardware Version",
+              "packet.hardwareVersion.representation Rover 40A": "Hardware Version",
+              "packet.identityInfo.displayName Rover 40A": "Name",
+              "packet.loadWorkingMode": "Load Mode",
+              "packet.productModelString": "Product Model",
+              "packet.productSerialNumber": "Serial Number",
+              "packet.productSerialNumber Rover 40A": "Serial",
+              "packet.ratedChargingCurrent": "Rated amps",
+              "packet.ratedChargingCurrent Rover 40A": "Rated amps",
+              "packet.ratedDischargingCurrent": "Rated discharging amps",
+              "packet.ratedDischargingCurrent Rover 40A": "Rated discharging amps",
+              "packet.softwareVersion.representation": "Software Version",
+              "packet.softwareVersion.representation Rover 40A": "Software Version",
+              "packet.solarModeTypeDisplayName": "Charging Mode"
+            }
+          }
+        },
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "volt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        batteryVoltage\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Battery Voltage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "watt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        chargingPower\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Charging Power",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "fahrenheit",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        batteryTemperatureFahrenheit\n        controllerTemperatureFahrenheit\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Temperatures",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "packet.batteryTemperatureFahrenheit Rover 40A": "Battery",
+              "packet.controllerTemperatureFahrenheit Rover 40A": "Controller"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "watt",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        loadPower\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Discharging Power",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "kwatth",
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Generation AH"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Consumption AH"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Generation AH"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amph"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Consumption AH"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amph"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        dailyKWH\n        dailyKWHConsumption\n        dailyAH\n        dailyAHDischarging\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "Daily Generation and Consumption",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "packet.dailyAH Rover 40A": "Generation AH",
+              "packet.dailyAHDischarging Rover 40A": "Consumption AH",
+              "packet.dailyKWH Rover 40A": "Generation",
+              "packet.dailyKWHConsumption Rover 40A": "Consumption"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "retrodaredevil-wildgraphql-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.displayName}",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "amp",
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "unit",
+                "value": "volt"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillBelowTo",
+                "value": "Current"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Current"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "${datasource}"
+          },
+          "parsingOptions": [
+            {
+              "dataPath": "data.roverStatus",
+              "labelOptions": [
+                {
+                  "fieldConfig": {
+                    "defaultValue": "",
+                    "required": true
+                  },
+                  "name": "displayName",
+                  "type": "field",
+                  "value": "packet.identityInfo.displayName"
+                }
+              ],
+              "timeFields": [
+                {
+                  "timePath": "dateMillis"
+                }
+              ]
+            }
+          ],
+          "queryText": "query ($from: Long!, $to: Long!, $fragmentId: Int!, $identifier: String!) {\n  data: queryStatusIdentifier(\n    from: $from\n    to: $to\n    fragmentId: $fragmentId\n    identifier: $identifier\n  ) {\n    roverStatus {\n      dateMillis\n      packet {\n        pvCurrent\n        pvVoltage\n        identityInfo {\n          displayName\n        }\n      }\n    }\n  }\n}",
+          "refId": "A",
+          "variables": "{\n  \"identifier\": \"$identifier\"\n}",
+          "variablesWithFullInterpolation": "{\n  \"fragmentId\": $fragmentId\n}"
+        }
+      ],
+      "title": "PV Current and PV Voltage",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "packet.pvCurrent Rover 40A": "Current",
+              "packet.pvVoltage Rover 40A": "Voltage"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "SolarThing",
+    "Rover"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Wild Mountain Farms SolarThing",
+          "value": "9b2fe259-3112-4fb0-8d88-0788c6d6b5b4"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "retrodaredevil-wildgraphql-datasource",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "2",
+          "value": "2"
+        },
+        "description": "The fragment ID of the SolarThing instance that is monitoring a Renogy Rover (or Rover-like device)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Fragment ID",
+        "multi": false,
+        "name": "fragmentId",
+        "options": [
+          {
+            "selected": true,
+            "text": "2",
+            "value": "2"
+          }
+        ],
+        "query": "2",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "RoverIdentifier()",
+          "value": "RoverIdentifier()"
+        },
+        "description": "The internal representation of the device's identifier. This can usually be left alone.",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Identifier",
+        "multi": false,
+        "name": "identifier",
+        "options": [
+          {
+            "selected": true,
+            "text": "RoverIdentifier()",
+            "value": "RoverIdentifier()"
+          }
+        ],
+        "query": "RoverIdentifier()",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Rover Dashboard",
+  "uid": "f59b217b-135b-454b-b9f5-3191ad4dd036",
+  "version": 15,
+  "weekStart": ""
+}
