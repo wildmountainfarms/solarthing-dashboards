@@ -144,8 +144,7 @@
               }
             ]
           },
-          "unit": "volt",
-          "unitScale": true
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -171,7 +170,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -262,8 +261,7 @@
               }
             ]
           },
-          "unit": "fahrenheit",
-          "unitScale": true
+          "unit": "fahrenheit"
         },
         "overrides": []
       },
@@ -290,7 +288,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -375,7 +373,6 @@
         }
       ],
       "title": "Temperature Data",
-      "transformations": [],
       "type": "stat"
     },
     {
@@ -408,8 +405,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": []
       },
@@ -435,7 +431,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -498,8 +494,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": []
       },
@@ -525,7 +520,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -581,8 +576,7 @@
               }
             ]
           },
-          "unit": "kWh",
-          "unitScale": true
+          "unit": "kWh"
         },
         "overrides": []
       },
@@ -608,7 +602,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -694,8 +688,7 @@
               }
             ]
           },
-          "unit": "volt",
-          "unitScale": true
+          "unit": "volt"
         },
         "overrides": [
           {
@@ -805,6 +798,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "none"
         }
@@ -861,7 +855,6 @@
         }
       ],
       "title": "Battery Voltage",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -896,8 +889,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": []
       },
@@ -926,7 +918,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -992,8 +984,7 @@
               }
             ]
           },
-          "unit": "none",
-          "unitScale": true
+          "unit": "none"
         },
         "overrides": [
           {
@@ -1042,7 +1033,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1116,8 +1107,7 @@
               }
             ]
           },
-          "unit": "kWh",
-          "unitScale": true
+          "unit": "kWh"
         },
         "overrides": []
       },
@@ -1146,7 +1136,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1260,8 +1250,7 @@
               }
             ]
           },
-          "unit": "volt",
-          "unitScale": true
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -1287,7 +1276,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.3.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1310,7 +1299,6 @@
         }
       ],
       "title": "Magical Battery Voltage *",
-      "transformations": [],
       "type": "gauge"
     },
     {
@@ -1375,8 +1363,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": [
           {
@@ -1456,6 +1443,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "none"
         }
@@ -1512,7 +1500,6 @@
         }
       ],
       "title": "PV Wattage (TODO stack, forecast)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -1572,8 +1559,7 @@
               }
             ]
           },
-          "unit": "fahrenheit",
-          "unitScale": true
+          "unit": "fahrenheit"
         },
         "overrides": []
       },
@@ -1592,7 +1578,8 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "maxHeight": 600,
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -1701,8 +1688,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1846,7 +1832,6 @@
         }
       ],
       "title": "Power Usage (Stacked)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -1902,8 +1887,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2048,7 +2032,6 @@
         }
       ],
       "title": "Daily kWh (TODO stack)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -2104,8 +2087,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2249,7 +2231,6 @@
         }
       ],
       "title": "Load on Battery (Stacked)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -2305,8 +2286,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2451,7 +2431,6 @@
         }
       ],
       "title": "Generator Charging (Stacked)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -2651,7 +2630,6 @@
         }
       ],
       "title": "Energy used over time (Stacked)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -2852,7 +2830,6 @@
         }
       ],
       "title": "Generator Buying (Stacked)",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -3342,7 +3319,6 @@
         }
       ],
       "title": "Average Battery Voltage",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -3651,7 +3627,6 @@
         }
       ],
       "title": "Battery Voltage Temperature Compensated",
-      "transformations": [],
       "type": "timeseries"
     },
     {
@@ -3908,10 +3883,11 @@
     "from": "now-6h",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "browser",
   "title": "Wild Mountain Farms SolarThing",
   "uid": "d7152e74-753c-499b-b397-3b6fae1e6675",
-  "version": 33,
+  "version": 34,
   "weekStart": ""
 }
